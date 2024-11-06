@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:meu_app/widgets/animal_details_widget.dart';
+import 'package:meu_app/models/animal.dart';
+
+void main() {
+  testWidgets('Exibir detalhes do animal', (WidgetTester tester) async {
+    final animal = Animal(id: 1, nome: 'Rex', especie: 'Cachorro', idade: '2 anos');
+
+    await tester.pumpWidget(MaterialApp(
+      home: AnimalDetailsWidget(animal: animal),
+    ));
+
+    expect(find.text('Rex'), findsOneWidget);
+    expect(find.text('Cachorro'), findsOneWidget);
+    expect(find.text('2 anos'), findsOneWidget);
+  });
+}
